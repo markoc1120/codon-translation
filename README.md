@@ -61,15 +61,30 @@ You sometimes need to install Python modules for use in your own programs. One w
 
 where `requirements.txt` contains the list of modules you want to install. There is an example `requirements.txt` in this repository that installs the `pytest` tool. Try installing it.
 
+In the example `requirements.txt` we install two modules for testing code, `doctest` and `pytest`.
+
+The `doctest` module will validate if a function matches the behaviour we have described in its documentatiton string; if the documentation includes code that evaluates the function, `doctest` will test if it actually does what we claim.
+
+You can run it on the included template code by running
+
+```sh
+> python3 -m doctest src/*.py
+```
+
 The `pytest` tool makes it easy for you to write so-called "unit tests"--small test functions that validates that different aspects of your code is working. It looks for Python files whose name starts with `test_`, and in them, it will locate all functions whose names start with `test_` and run them. There is already a test file in this repository, so you can try running `pytest` with the command
 
 ```sh
 > python3 -m pytest src
 ```
 
-Whenever you make changes to your code, you should run `pytest` to ensure that everything is still working. If you add new code, you can add another test, as a `test_*` function in an existing file or in a new `test_*.py` file.  When you push changes from your repository to GitHub, GitHub will also run tests on your code, and you can see the results in the `Feedback` pull request or in the `Actions` window on your repository.
+Both tests will fail right now because there are tests to check if you have implemented the functions you need for this project, and for obvious reasons, you haven't done that yet. However, when you have implemented what you neeed to do, the tests will pass, and that will tell you that you have succeeded in your task.
+
+Whenever you make changes to your code, you should run `doctest` and `pytest` to ensure that everything is still working. If you add new code, you can include documentation strings so `doctest` can keep you honest about the documentation. If you want more detailed testing, you can add another test, as a `test_*` function in an existing file or in a new `test_*.py` file.  When you push changes from your repository to GitHub, GitHub will also run tests on your code, and you can see the results in the `Feedback` pull request or in the `Actions` window on your repository.
 
 ## Template code
 
-In the `src/` directory you can find two files, `codons.py` and `test_codons.py`. The first is where you should write your code for this project, and the second is where you should write tests. There are already some tests, to get you started, but you might want to add more.
+In the `src/` directory you can find two files, `codons.py` and `test_codons.py`. The first is where you should write your code for this project, and the second is where you should write tests. There are already some tests, to get you started, but you may want to add more, if you wish to test your code in more detail. That is entirely up to you.
 
+The `codons.py` file contains the table of codons to amino acid translations shown above and three functions. The first function, `split_codons()` splits a string of nucelotides into codons (triplets), the second, `translate_codons()` takes a list of these triplets and translate them into amino acids, and the last function, `translate_dna()` should translate all the way from a DNA sequence to an amino acid sequence. The last function can obviously use the first to achieve its goal, but you are free to implement it any way you want, as long as it can translate DNA strings to amino acids.
+
+The task in this project is to implement the three functions in `codons.py`.

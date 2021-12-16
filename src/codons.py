@@ -18,17 +18,67 @@ CODON_MAP = {'TTT': 'F', 'TTC': 'F', 'TTA': 'L', 'TTG': 'L',
              'GGT': 'G', 'GGC': 'G', 'GGA': 'G', 'GGG': 'G'}
 
 
-def split_codons(dna: str) -> list[str]:
-    """Split a DNA string into a list of triplets."""
+def split_codons(dna: str) -> list[str] | None:
+    """Split a DNA string into a list of triplets.
+
+    If the length of the string is a multiple of tree, then this
+    function splits the string into non-overlapping triplets.
+
+    >>> split_codons('aaacccgggtttt')
+    ['aaa', 'ccc', 'ggg', 'ttt']
+
+    If the string length is not a multiple of three, the function
+    should return `None`. (There are better ways at reporting
+    errors, but we will see those later).
+
+    >>> split_codons("acgt")
+    None
+
+    """
+    # FIXME: Implement the function
     return []
 
 
 def translate_codons(codons: list[str]) -> list[str]:
     """Translate a list of codons (triplets) into their corresponding
-    amino acid sequence."""
+    amino acid sequence.
+
+    >>> translate_codons(['TGT', 'TGC', 'TGA'])
+    ['C', 'C', '*']
+
+    The function must be able to handle both upper and lower case
+    strings.
+
+    >>> translate_codons(['tgt', 'tgc', 'tga'])
+    ['C', 'C', '*']
+
+    If the `codons` list contain anything that isn't a valid codon,
+    i.e. not in the CODON_MAP when translated into upper case, the
+    function should return `None`.
+
+    >>> translate_codons(["acg", "ac", "gca])
+    None
+
+    """
+    # FIXME: Implement the function
     return []
 
 
 def translate_dna(dna: str) -> str:
-    """Translate a DNA string into its corresponding amino acid string."""
+    """Translate a DNA string into its corresponding amino acid string.
+
+    >>> translate_dna('TGTTGCTGA')
+    'CC*'
+    >>> translate_dna('tgttgctga')
+    'CC*'
+
+    If the sequence does not have a length that is a multiple of three, of if
+    any of the triplets in it are not valid codons (when in uppercase), the function
+    should return `None`.
+
+    >>> translate_dna('tgtgctg')
+    None
+
+    """
+    # FIXME: Implement the function
     return ""
