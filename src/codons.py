@@ -56,7 +56,7 @@ def translate_codons(codons: list[str]) -> list[str]:
     i.e. not in the CODON_MAP when translated into upper case, the
     function should return `None`.
 
-    >>> translate_codons(["acg", "ac", "gca])
+    >>> translate_codons(["acg", "ac", "gca"])
     None
 
     """
