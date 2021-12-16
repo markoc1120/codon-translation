@@ -61,7 +61,11 @@ You sometimes need to install Python modules for use in your own programs. One w
 
 where `requirements.txt` contains the list of modules you want to install. There is an example `requirements.txt` in this repository that installs the `pytest` tool. Try installing it.
 
-In the example `requirements.txt` we install two modules for testing code, `doctest` and `pytest`.
+In the example `requirements.txt` we install a modules for testing code, `pytest`.
+
+## Testing your code
+
+We use two types of tests on projects in CTiB, `doctest` which is part of the standard Python library and `pytest` which we need to install. You can use them to test your code in your repository, but we also run tests every time you commit to GitHub, so we can keep track of your progress along the way.
 
 The `doctest` module will validate if a function matches the behaviour we have described in its documentatiton string; if the documentation includes code that evaluates the function, `doctest` will test if it actually does what we claim.
 
@@ -79,7 +83,9 @@ The `pytest` tool makes it easy for you to write so-called "unit tests"--small t
 
 Both tests will fail right now because there are tests to check if you have implemented the functions you need for this project, and for obvious reasons, you haven't done that yet. However, when you have implemented what you neeed to do, the tests will pass, and that will tell you that you have succeeded in your task.
 
-Whenever you make changes to your code, you should run `doctest` and `pytest` to ensure that everything is still working. If you add new code, you can include documentation strings so `doctest` can keep you honest about the documentation. If you want more detailed testing, you can add another test, as a `test_*` function in an existing file or in a new `test_*.py` file.  When you push changes from your repository to GitHub, GitHub will also run tests on your code, and you can see the results in the `Feedback` pull request or in the `Actions` window on your repository.
+Whenever you make changes to your code, you should run `doctest` and `pytest` to ensure that everything is still working. If you add new code, you can include documentation strings so `doctest` can keep you honest about the documentation. If you want more detailed testing, you can add another test, as a `test_*` function in an existing file or in a new `test_*.py` file.
+
+When you push changes from your repository to GitHub, GitHub will also run tests on your code, and you can see the results in the `Feedback` pull request or in the `Actions` window on your repository.
 
 ## Template code
 
