@@ -89,8 +89,52 @@ When you push changes from your repository to GitHub, GitHub will also run tests
 
 ## Template code
 
-In the `src/` directory you can find two files, `codons.py` and `test_codons.py`. The first is where you should write your code for this project, and the second is where you should write tests. There are already some tests, to get you started, but you may want to add more, if you wish to test your code in more detail. That is entirely up to you.
+In the `src/` directory you can find two files relevant for the main task: `codons.py` and `test_codons.py`. The first is where you should write your code for this project, and the second is where you should write tests. There are already some tests, to get you started, but you may want to add more, if you wish to test your code in more detail. That is entirely up to you.
 
 The `codons.py` file contains the table of codons to amino acid translations shown above and three functions. The first function, `split_codons()` splits a string of nucelotides into codons (triplets), the second, `translate_codons()` takes a list of these triplets and translate them into amino acids, and the last function, `translate_dna()` should translate all the way from a DNA sequence to an amino acid sequence. The last function can obviously use the first to achieve its goal, but you are free to implement it any way you want, as long as it can translate DNA strings to amino acids.
 
 The task in this project is to implement the three functions in `codons.py`.
+
+## Building a command-line tool
+
+There is a third Python file in `src`, `src/main.py`, that will show you have to build a command-line program in Python. Generally, you can run any Python code by calling `python3` with the file that contains the code, e.g.
+
+```sh
+> python3 foo.py
+```
+
+will run any code in the file `foo.py`. However, there is a little more to writing command-line tools than this. For a tool to be useful, the user needs a mechanism to provide input to program, in some case also a way to provide optional flags, and the user needs to get the results of running the code back.
+
+The way the user informs the program about which flags/options to use and where to find input and where to write output is through command-line arguments, and the actual data that goes into the program and comes out again goes through files (or "streams", which are essentially the same thing).
+
+The file `src/main.py` shows you a very rudementary way of handling this in Python; in later projects we will see more advanced (and better) techniques.
+
+Once you have implemented the functions in `src/codons.py`, you can use `src/main.py` as a command-line tool. You can call it in three different ways--the source code explains how this works--depending on how you want to specify the input and where you want the output to go.
+
+If you use the program without any arguments, it will read the input from `stdin` and write it to `stdout`, so you could use it in a pipeline as
+
+```sh
+> cat data/seqs.in | python3 src/main.py
+```
+
+to write the translated sequence from `data/seqs.in` to the terminal.
+
+You can also provide the input file directly to the program if you give it a single argument:
+
+```sh
+> python3 src/main.py data/seqs.in
+```
+
+and it will, again, write the translated sequences from `seqs.in` to the terminal.
+
+Finally, if you provide two file-arguments to the tool, it will read the input data from the first file and write the output to the second file.
+
+```sh
+> python3 src/main.py data/seqs.in my-output.out
+```
+
+You can try it out, when you have implemented your functions, and you can test if the output you get from the tool, when you run it with `data/seqs.in` matches the data in `data/seqs.out` (but don't overwrite `data/seqs.out` if you plan to do that).
+
+We are not doing any sensible tests in the arguments in this project, so you will not get user-friendly error messages if you provide input files that do not exist, or try to write to a file you do not have permission to write to. That is something we will improve upon in later projects.
+
+Writing `python3 program.py` to run the program `program.py` doesn't look like other programs on the command-line, where we would usually just write `program` to run `program`. There isn't anything wrong with that, it just says that we use Python to execute the program. There are, however, ways of making Python programs look more like other programs. Several, in fact. But, you guessed it, we leave that for future projects. We have already covered a lot in one project, and once you have everything up and running, you can pad yourself on the shoulders and take a short break before we continue.
