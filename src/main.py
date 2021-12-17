@@ -70,6 +70,15 @@ import sys
 
 from codons import translate_dna
 
+# You do not need to indent a command-line tool's code under
+# a 'if __name__ == __main__:' construction, but it is common
+# practise (if not exactly *best* practise). The idea behind
+# it is this: when you import a Python file as a module, the
+# __name__ variable is the name of the module, but if you run
+# it as a program, __name__ will be '__main__'. So, this
+# construction lets you specify code that should only be run
+# when you use a file as a program, but not if you import
+# the file for use as a module.
 if __name__ == '__main__':
     infile, outfile = sys.stdin, sys.stdout
     match len(sys.argv):
