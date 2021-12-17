@@ -36,7 +36,7 @@ dna = "ATGACCGAACAGTAG"
 consisting of triplets, 
 
 ```python
-codons = ["ACG", "ACC", "GAA", "CAG", "TAG"]
+codons = ["ATG", "ACC", "GAA", "CAG", "TAG"]
 ```
 
 you would expect to get the corresponding amino acids

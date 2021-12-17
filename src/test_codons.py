@@ -24,19 +24,19 @@ def test_split_codons() -> None:
 def test_translate_codons() -> None:
     """Testing translate_codons()."""
     assert translate_codons(
-        ["ACG", "ACC", "GAA", "CAG", "TAG"]
+        ["ATG", "ACC", "GAA", "CAG", "TAG"]
     ) == ['M', 'T', 'E', 'Q', '*']
     assert translate_codons(
-        ["acg", "ACC", "gAa", "caG", "Tag"]
+        ["atg", "ACC", "gAa", "caG", "Tag"]
     ) == ['M', 'T', 'E', 'Q', '*']
     assert translate_codons(
-        ["acg", "gAa", "Tag"]
+        ["atg", "gAa", "Tag"]
     ) == ['M', 'E', '*']
 
     # Faulty codons
     assert translate_codons(["aaa", "cc", "ggg"]) is None
     assert translate_codons(["aaa", "foo", "ggg"]) is None
-    assert translate_codons([123, "ccc", "ggg"]) is None
+    assert translate_codons(["123", "ccc", "ggg"]) is None
 
     # Empty list
     assert translate_codons([]) == []
@@ -44,9 +44,9 @@ def test_translate_codons() -> None:
 
 def test_translate_dna() -> None:
     """Testing translate_dna()."""
-    assert translate_dna("ACGACCGAACAGTAG") == 'MTEQ*'
-    assert translate_dna("acgaccgaacagtag") == 'MTEQ*'
-    assert translate_dna("acggaatag") == 'ME*'
+    assert translate_dna("ATGACCGAACAGTAG") == 'MTEQ*'
+    assert translate_dna("atgaccgaacagtag") == 'MTEQ*'
+    assert translate_dna("atggaatag") == 'ME*'
 
     # Not multiple of three
     assert translate_dna("aaaccggg") is None
