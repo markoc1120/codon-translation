@@ -109,7 +109,9 @@ The way the user informs the program about which flags/options to use and where 
 
 The file `src/main.py` shows you a very rudementary way of handling this in Python; in later projects we will see more advanced (and better) techniques.
 
-Once you have implemented the functions in `src/codons.py`, you can use `src/main.py` as a command-line tool. You can call it in three different ways--the source code explains how this works--depending on how you want to specify the input and where you want the output to go.
+You do not need to modify anything in this file, but I encourage you to read it, to get an idea about how you can turn your own code into something that works as a command-line tool. It won't be long before you will need to know how to do this.
+
+For this project, though, once you have implemented the functions in `src/codons.py`, you can use `src/main.py` as a command-line tool. You can call it in three different ways--the source code explains how this works--depending on how you want to specify the input and where you want the output to go.
 
 If you use the program without any arguments, it will read the input from `stdin` and write it to `stdout`, so you could use it in a pipeline as
 
