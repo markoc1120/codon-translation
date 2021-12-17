@@ -135,6 +135,14 @@ Finally, if you provide two file-arguments to the tool, it will read the input d
 
 You can try it out, when you have implemented your functions, and you can test if the output you get from the tool, when you run it with `data/seqs.in` matches the data in `data/seqs.out` (but don't overwrite `data/seqs.out` if you plan to do that).
 
+You can, for example, use `diff` to test if you get the right output. If you are using `bash`, for example, you could use
+
+```bash
+> diff <(python3 src/main.py data/seqs.in) data/seqs.out
+```
+
+to see if there are any differences between the output of your program and the file `data/seqs.out`.
+
 We are not doing any sensible tests in the arguments in this project, so you will not get user-friendly error messages if you provide input files that do not exist, or try to write to a file you do not have permission to write to. That is something we will improve upon in later projects.
 
 Writing `python3 program.py` to run the program `program.py` doesn't look like other programs on the command-line, where we would usually just write `program` to run `program`. There isn't anything wrong with that, it just says that we use Python to execute the program. There are, however, ways of making Python programs look more like other programs. Several, in fact. But, you guessed it, we leave that for future projects. We have already covered a lot in one project, and once you have everything up and running, you can pad yourself on the shoulders and take a short break before we continue.
