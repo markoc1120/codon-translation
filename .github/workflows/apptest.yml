@@ -1,10 +1,10 @@
-name: PyTest
+name: Testing Apps
 
 on: [push]
 
 jobs:
   make-testing:
-    name: PyTest checking
+    name: Checking application
     runs-on: ubuntu-latest
     steps:
       - name: Checking out repository

@@ -1,0 +1,4 @@
+# For copying issues into student repos.
+# Specifies which repo to copy from.
+issues:
+  starterName: birc-ctib/codon-translation
