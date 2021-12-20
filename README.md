@@ -95,6 +95,10 @@ The `codons.py` file contains the table of codons to amino acid translations sho
 
 The task in this project is to implement the three functions in `codons.py`.
 
+- [ ] Implement the `split_codons()` function according to the specification.
+- [ ] Implement the `translate_codons()` function according to the specification.
+- [ ] Implement the `translate_dna()` function according to the specification.
+
 ## Building a command-line tool
 
 There is a third Python file in `src`, `src/main.py`, that will show you have to build a command-line program in Python. Generally, you can run any Python code by calling `python3` with the file that contains the code, e.g.
@@ -119,9 +123,23 @@ If you use the program without any arguments, it will read the input from `stdin
 > cat data/seqs.in | python3 src/main.py
 ```
 
+or
+
+```sh
+> python3 src/main.py < data/seqs.in
+```
+
 to write the translated sequence from `data/seqs.in` to the terminal.
 
-You can also provide the input file directly to the program if you give it a single argument:
+If you want the output to go to a file, you must redirect it
+
+```sh
+> python3 src/main.py < data/seqs.in > output.out
+```
+
+That is a very primitive interface, and a user will typically expect that a program that can read a file can also take a filename as an argument, and while not all programs accept a filename for the output, it is common enough that we should consider providing it.
+
+You should be able to provide the input file directly to the program if you give it a single argument:
 
 ```sh
 > python3 src/main.py data/seqs.in
@@ -129,21 +147,33 @@ You can also provide the input file directly to the program if you give it a sin
 
 and it will, again, write the translated sequences from `seqs.in` to the terminal.
 
-Finally, if you provide two file-arguments to the tool, it will read the input data from the first file and write the output to the second file.
+If you provide two file-arguments to the tool, it should read the input data from the first file and write the output to the second file.
 
 ```sh
 > python3 src/main.py data/seqs.in my-output.out
 ```
 
-You can try it out, when you have implemented your functions, and you can test if the output you get from the tool, when you run it with `data/seqs.in` matches the data in `data/seqs.out` (but don't overwrite `data/seqs.out` if you plan to do that).
+The arguments that a program gets are put in `sys.argv`, with the name of the program at `sys.argv[0]` and any following arguments after that. The number of real arguments this thus always `len(sys.argv) - 1`. You can test how many you have by checking `len(sys.argv)`:
 
-You can, for example, use `diff` to test if you get the right output. If you are using `bash`, for example, you could use
-
-```bash
-> diff <(python3 src/main.py data/seqs.in) data/seqs.out
+```python
+if len(sys.argv) == 1:
+    # zero arguments -- use stdin and stdout
+elif len(sys.argv) == 2:
+    # one argument -- use sys.argv[1] instead of stdin
+elif len(sys.argv) == 3:
+    # two arguments -- use sys.argv[1] for input and sys.argv[2] for output
+else:
+    # more than two arguments; that is an error
 ```
 
-to see if there are any differences between the output of your program and the file `data/seqs.out`.
+To open an input file, a file you want to read from, use `open("filename")` or `open("filename", "r")`, and to open an output file, a file you want to write to, use `open("filename", "w")`.
+
+ - [ ] Extend the program such that if `len(sys.argv) in [2, 3]`, the program should read from a file you open as `open(sys.argv[1])`.
+ - [ ] Extend the program such that if `len(sys.argv) == 3`, the program should write from a file you open as `open(sys.argv[2], "w")`.
+
+ If you have more than two arguments, terminate the program with `sys.exit(1)` to indicate an error.
+ 
+
 
 We are not doing any sensible tests in the arguments in this project, so you will not get user-friendly error messages if you provide input files that do not exist, or try to write to a file you do not have permission to write to. That is something we will improve upon in later projects.
 
