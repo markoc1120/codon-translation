@@ -169,7 +169,7 @@ else:
 To open an input file, a file you want to read from, use `open("filename")` or `open("filename", "r")`, and to open an output file, a file you want to write to, use `open("filename", "w")`.
 
  - [ ] Extend the program such that if `len(sys.argv) in [2, 3]`, the program should read from a file you open as `open(sys.argv[1])`.
- - [ ] Extend the program such that if `len(sys.argv) == 3`, the program should write from a file you open as `open(sys.argv[2], "w")`.
+ - [ ] Extend the program such that if `len(sys.argv) == 3`, the program should write to a file you open as `open(sys.argv[2], "w")`.
 
  If you have more than two arguments, terminate the program with `sys.exit(1)` to indicate an error.
  
