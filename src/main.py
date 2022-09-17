@@ -83,14 +83,15 @@ if __name__ == '__main__':
     infile, outfile = sys.stdin, sys.stdout
     match len(sys.argv):
         case 1:
-            # zero arguments
+            # zero arguments -- default infile and outfile is fine
             pass
         case 2:
-            # one argument
+            # one argument -- open argv[1] for infile
             print("Feature not implemented yet.", file=sys.stderr)
             sys.exit(1)
         case 3:
-            # two arguments
+            # two arguments -- open argv[1] for infile and argv[2]
+            # for outfile
             print("Feature not implemented yet.", file=sys.stderr)
             sys.exit(1)
         case _:
