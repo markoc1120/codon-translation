@@ -53,7 +53,7 @@ and you could build the following string from that:
 
 ## Template code
 
-The `codons.py` file contains the table of codons to amino acid translations shown above and three functions. The first function, `split_codons()` splits a string of nucelotides into codons (triplets), the second, `translate_codons()` takes a list of these triplets and translate them into amino acids, and the last function, `translate_dna()` should translate all the way from a DNA sequence to an amino acid sequence. The last function can obviously use the first to achieve its goal, but you are free to implement it any way you want, as long as it can translate DNA strings to amino acids.
+The `codons.py` file contains the table of codons to amino acid translations shown above and three functions (ignore the `main.py` file for now). The first function, `split_codons()` splits a string of nucelotides into codons (triplets), the second, `translate_codons()` takes a list of these triplets and translate them into amino acids, and the last function, `translate_dna()` should translate all the way from a DNA sequence to an amino acid sequence. The last function can obviously use the first to achieve its goal, but you are free to implement it any way you want, as long as it can translate DNA strings to amino acids.
 
 The task in this project is to implement the three functions in `codons.py`.
 
