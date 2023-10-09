@@ -35,8 +35,13 @@ def split_codons(dna: str) -> list[str] | None:
     True
 
     """
-    # FIXME: Implement the function
-    return []
+    if len(dna) % 3 == 0:
+        codons=[]
+        for i in range(0, len(dna), 3):
+            codons.append(dna[i:i+3])
+        return codons
+    else:
+        return None
 
 
 def translate_codons(codons: list[str]) -> list[str]:
@@ -60,8 +65,11 @@ def translate_codons(codons: list[str]) -> list[str]:
     True
 
     """
-    # FIXME: Implement the function
-    return []
+    if codons:
+        try:
+            return [CODON_MAP[codon.upper()] for codon in codons]
+        except KeyError:
+            return None
 
 
 def translate_dna(dna: str) -> str:
@@ -80,5 +88,9 @@ def translate_dna(dna: str) -> str:
     True
 
     """
-    # FIXME: Implement the function
-    return ""
+    codons = split_codons(dna)
+    translated_codons = translate_codons(codons)
+    if translated_codons:
+        return ''.join(translated_codons)
+    else:
+        return None
