@@ -22,7 +22,7 @@ else:
     # more than two arguments; that is an error
 
 or we can use the new pattern matching syntax from Python 3.10
-and do this, 
+and do this,
 
 match len(sys.argv):
     case 1:
@@ -79,7 +79,7 @@ from codons import translate_dna
 # construction lets you specify code that should only be run
 # when you use a file as a program, but not if you import
 # the file for use as a module.
-if __name__ == '__main__':
+if __name__ == "__main__":
     infile, outfile = sys.stdin, sys.stdout
     match len(sys.argv):
         case 1:
@@ -87,13 +87,16 @@ if __name__ == '__main__':
             pass
         case 2:
             # one argument -- open argv[1] for infile
-            print("Feature not implemented yet.", file=sys.stderr)
-            sys.exit(1)
+            # print("Feature not implemented yet.", file=sys.stderr)
+            # sys.exit(1)
+            infile = open(sys.argv[1])
         case 3:
             # two arguments -- open argv[1] for infile and argv[2]
             # for outfile
-            print("Feature not implemented yet.", file=sys.stderr)
-            sys.exit(1)
+            # print("Feature not implemented yet.", file=sys.stderr)
+            # sys.exit(1)
+            infile = open(sys.argv[1])
+            outfile = open(sys.argv[2], "w")
         case _:
             # more than two arguments; that is an error
             print("Too many arguments.", file=sys.stderr)
@@ -110,7 +113,10 @@ if __name__ == '__main__':
             print(f"Could not translate '{line}'.", file=sys.stderr)
             sys.exit(1)
         # If everthing went well, we write the result to the output
-        print(aa, file=outfile)
+        if outfile:
+            outfile.write(f"{aa}\n")
+        else:
+            print(aa, file=outfile)
 
     # It is polite to close files when we no longer need them.
     # It doesn't matter here because we are just about to terminate
